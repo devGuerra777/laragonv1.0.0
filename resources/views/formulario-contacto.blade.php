@@ -20,6 +20,10 @@
 
     <form action="/contacto-recibe" method="POST">
         @csrf
+        @if ($tipo_persona == 'cliente')
+        <label for = "no_cliente">Numero de cliente:</label><br>
+        <input type="text" name=no_cliente" id="no_cliente"><br>
+        @endif(´nombre´)
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre"><br>
         

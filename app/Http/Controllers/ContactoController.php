@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class ContactoController extends Controller
 {
-    public function formulario() {
-        return view('formulario-contacto');
+    public function formulario ($tipo_persona = null) { //SI NO TIENE NINGUN VALOR SE LE ASIGNA NULL
+        //dd($tipo_persona);
+        return view('formulario-contacto',compact('tipo_persona'));//CREA UNA COIPIA DEL VALOR DE LA VARIABLE   
     }
 
     public function newContact(Request $request) {
@@ -24,7 +25,11 @@ class ContactoController extends Controller
          $contacto->mensaje = $request->mensaje;
          $contacto->save();
      
-         return redirect('/contacto');
+         return redirect('/lista');
      }
      
+     public function lista(){
+        $mensajes = Contacto::all();
+        return view('lista',compact('mensajes'));
+     }
 }
