@@ -15,4 +15,4 @@ Route::post('/contacto-recibe',[ContactoController::class,'newContact']);
 Route::get('lista',[ContactoController::class,'lista']);
 
 /*RESOURCE CONTROLLER LARAVEL */
-Route::resource('noticias',NoticiaController::class);
+Route::resource('noticia',NoticiaController::class);

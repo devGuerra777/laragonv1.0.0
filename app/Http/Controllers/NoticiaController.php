@@ -12,7 +12,8 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        //
+        $noticias = Noticia::all();
+        return view('noticias.index-noticia', compact('noticias'));
     }
 
     /**
@@ -20,7 +21,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        //
+        return view('noticias.create-noticia');
     }
 
     /**
@@ -28,15 +29,18 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //request->validate([]);
+        Noticia::create($request->all());
+        return redirect()->route('noticia.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Noticia $noticia)
+    public function show($id)
     {
-        //
+        $noticia = Noticia::findOrFail($id);
+        return view('noticias.show-noticia', compact('noticia'));
     }
 
     /**
